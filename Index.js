@@ -2,7 +2,7 @@ The following are some nodejs projects
 1. REST CRUD APIs with nodejs and expressjs
 
 a. CRUD API with virtual memory and JSON 
-b.CRUD APIwith mysql database 
+b.CRUD API with mysql database 
 c.CRUD API with MongoDB no SQL database
 
 Project Set Up
@@ -30,13 +30,13 @@ a. Working with virtual memory with JSON
 writing the code
 
 index.js
-var express = require('express')
+var express = require('express');
 var app = express();
 var students = require("./router.js");
 app.use("/students", "students");
 app.listen(3000, function(){
 console.log('server is
-listening at port '+ 3000);
+listening at port 3000');
 
 router.js
 var express = require('express');
@@ -56,7 +56,7 @@ res.json(students);
 });
 //Get router for individual student
 router.get("/:id([0-9]{3,})",function(req,res){
-var currStudent = student.filter(function(student){
+var currStudent = students.filter(function(student){
 if(students.id = req.params.id){return true;}
 });
 if(currStudent.length==1){
@@ -72,21 +72,21 @@ if(!req.body.name||!req.body.age||!req.body.sex){
 res.status(404);
 res.json({message:" Bad Request");}
 else{
-var newId=movies[movies.length-1].id+1;
-movies.push({id:newId,
+var newId=studentd[students.length-1].id+1;
+students.push({id:newId,
 name:req.body.name,age:req.body.age,sex:req.body.sex});}
-res.json(movies);
+res.json(students);
 });
 //PUT router to update individual student record
 router.put("/:id",function(req,res){
-var updateindex. = students.map(function(student){
+var updateindex = students.map(function(student){
 return students.id;}.indexOf(req.params.id);
 if(updateindex!=<-1 && req.body.name && req.body.age && req.body.sex){students[updateindex]={name:req.body.name,age:req.body.age,sex:req.body.sex};};});
 res.json(students);});
 
 //DELETE Router to delete a student record
 router.delete('/', function(req, res){
-0var removeIndex = students.map(function(student)){
+var removeIndex = students.map(function(student)){
 return students.id}).indexOf(req.params.id);}
 students.splash(removeindex,1);
 res.json(students);
@@ -121,7 +121,7 @@ var students = require("./router.js");
 app.use("/students", "students");
 app.listen(3000, function(){
 console.log('server is
-listening at port '+ 3000);
+listening at port 3000');
 
 router.js
 var express = require('express');
@@ -253,7 +253,7 @@ Writing the codes
 Index.js
 var express = require('express');
 app.listen(8000, function(){
-console.log('server is listening at port '+8000);
+console.log('server is listening at port 8000');
 })
 router.js
 var mongoose = require('mongoose');
