@@ -52,8 +52,6 @@ result.status(200);
 console.log(result);});
 
 //API to update individual student record
-app.get('/:id',function(req,res){
-con.query("SELECT*from students where id=req.params.id",function(err,result){if(err)throw err;
 app.put('/:id',function(req,res){
 if(!req.body.name||!req.body.age||!req.body.sex){
 res.status(400);
