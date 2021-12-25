@@ -1,104 +1,11 @@
-The following are some nodejs projects
-1. REST CRUD APIs with nodejs and expressjs
-
-a. CRUD API with virtual memory and JSON 
-b.CRUD API with mysql database 
-c.CRUD API with MongoDB no SQL database
-
-Project Set Up
-
-
-Install a text editor eg notepad+, or an IDE
-Download node.js to install nodejs and the npm
-on your machine
-To test the versions of nodejs and npm type this at the command prompt
-node -- version
-npm -- version
-
-Create your project directory and init it
-
-Type these at the cmd prompt
-mkdir nodeprojecta
-cd nodeprojecta
-npm init
-
-Note: Your entry point is index.js
-
-Create index.js and router.js files in your directory 
-
-a. Working with virtual memory with JSON 
-writing the code
-
-index.js
-var express = require('express');
-var app = express();
-var students = require("./router.js");
-app.use("/students", "students");
-app.listen(3000, function(){
-console.log('server is
-listening at port 3000');
-
-router.js
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var router = express.Router();
-app.use(bodyParser.urlencoded({extended:true});
-
-var students =[ {id:201, name:"Yola", age:1996,sex:"male"},
-{id:202,name:"Dupe",age:1998,sex:"female"},
-{id:203,name:"Tolu",age:"2001,sex:"male"}];
-
-//Get router for all Students
-router.get('/',function(req, res){
-console.log(students);
-res.json(students);
-});
-//Get router for individual student
-router.get("/:id([0-9]{3,})",function(req,res){
-var currStudent = students.filter(function(student){
-if(students.id = req.params.id){return true;}
-});
-if(currStudent.length==1){
-res.json(currStudent);}
-else{res.status(404);
-res.json({message:"Bad Request"});}
-});
-
-//POST Router to create a student record
-
-router.post("/",function(req, res){
-if(!req.body.name||!req.body.age||!req.body.sex){
-res.status(404);
-res.json({message:" Bad Request");}
-else{
-var newId=studentd[students.length-1].id+1;
-students.push({id:newId,
-name:req.body.name,age:req.body.age,sex:req.body.sex});}
-res.json(students);
-});
-//PUT router to update individual student record
-router.put("/:id",function(req,res){
-var updateindex = students.map(function(student){
-return students.id;}.indexOf(req.params.id);
-if(updateindex!=<-1 && req.body.name && req.body.age && req.body.sex){students[updateindex]={name:req.body.name,age:req.body.age,sex:req.body.sex};};});
-res.json(students);});
-
-//DELETE Router to delete a student record
-router.delete('/', function(req, res){
-var removeIndex = students.map(function(student)){
-return students.id}).indexOf(req.params.id);}
-students.splash(removeindex,1);
-res.json(students);
-});
-
 b Working with MYSQL database
-Download MYSL and install it on your local machine.
-Require MYSQL driver with NPM.
 
-create a separate file for connection to the database
+index1.js
+var express = require('express');
+var app = express();
 
-connection.js
+
+
 var mysql = require ('mysql');
 var con = mysql.createConnection({
 host:"localhost",
@@ -109,32 +16,18 @@ con.connect(function (err){
 if(err) throw err;
 console.log('Connected 
 to Database');});
-module.exports= con
-
-
 }
 
-index.js
-var express = require('express')
-var app = express();
-var students = require("./router.js");
-app.use("/students", "students");
-app.listen(3000, function(){
-console.log('server is
-listening at port 3000');
 
-router.js
 var express = require('express');
-var db = require('./connection.js');
+var db = require('./conne
 var app = express();
-app.set('view-engine', 'Jade');
-app.set('views','/views');
 var bodyParser = require('body-parser');
-var router = express.Router();
 app.use(bodyParser.urlencoded({extended:true});
+app.use,(bodyParser.json());
 
 //Get router for all Students
-router.get('/',function(req, res){
+app.get('/',function(req, res){
 var sql = "SELECT* FROM students";
 db.query(sql,function(err,result){
 if(err) throw err;
@@ -142,10 +35,11 @@ res.render('display', {name:result.name,sex:result.sex,age:result.age})
 }
 });
 //Get router for individual student
-router.get("/:id",function(req,res){
+app.get("/:id",function(req,res){
 var sql="SELECT* from students where id=?";
 var value=req.params.id;
-db.query(sql,[val],function(err,result){res.sender(display,{name:result.name,sex:result.sex,age:result.age});});
+con.query(sql,[value],function(err,result)
+{res.json(result;)});});
 
 
 //API to create a student record
@@ -155,13 +49,13 @@ if(!req.body.name||!req.body.age||!req.body.sex){
 res.status(404);
 res.json({message:" Bad Request");}
 else{
-db.query("INSERTinto students(name,sex,age) Values(req.body.name,req.body.sex,req.body.age)",function(err,result){if(err)throw err;
-console.log(result);});}
+Mid.query("INSERTinto students(name,sex,age) Values(req.body.name,req.body.sex,req.body.age)",function(err,result){if(err)throw err;
+console.log(result);});
 
 //API to update individual student record
 router.get('/update/:id',function(req,res){
 
-db.query("SELECT*from students where id=req.params.id",function(err,result){if(err)throw err;
+c.query("SELECT*from students where id=req.params.id",function(err,result){if(err)throw err;
 res.render('update',{name:result.name,age:result.age,sex:result.age});});});
 router.put('/update/:id',function(req,res){
 if(!req.body.name||!req.body.age||!req.body.sex){
@@ -169,12 +63,12 @@ res.status(400);
 res.json({message:"Bad Request"});
 else{
 var sql="update students where id=req.params.id";
-db.query(sql,function(err,result){if(err)throw err;
+Conn.query(sql,function(err,result){if(err)throw err;
 console.log(result.affected row +'updatex');});
 }
 });
 //API to delete a student record
-router.delete('delete/:id', function(req,res){
+appr.delete('delete/:id', function(req,res){
 var sql='DELETE from students where id=req.params.id';
 db.query(sql,function(err,result){if(err)throw err;
 console.log(result.affected row+'updated');});
@@ -281,14 +175,9 @@ API to delete student record
 router.delete('/delete/:id',function (req,res){Person.remove({id:req.params.id},function (err,response){if(err)throw err;
 console.log('student deleted');
 });});
- 
-
-
-
-
-
-
-
+app.listen(3000, function(){
+console.log('server is
+listening at port 3000');
 
 
 
