@@ -1,4 +1,3 @@
-
 a. Using virtual memory to store data.
 
 index.js
@@ -9,9 +8,9 @@ var app = express();
 app.use(bodyParser.urlencoded({extended:true});
 app.use(bodyParser.json());
 
-var students =[ {id:201, name:"Yola", age:1996,sex:"male"},
-{id:202,name:"Dupe",age:1998,sex:"female"},
-{id:203,name:"Tolu",age:"2001,sex:"male"}];
+var students =[ {id:201, name:"Yola", year:1996,sex:"male"},
+{id:202,name:"Dupe",year:1998,sex:"female"},
+{id:203,name:"Tolu",year:"2001,sex:"male"}];
 
 //Get router for all Students
 app.get('/',function(req, res){
