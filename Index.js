@@ -55,7 +55,7 @@ res.json(students);
 app.delete('/', function(req, res){
 var removeIndex = students.map(function(student){
 return students.id}).indexOf(req.params.id);
-students.splash(removeindex,1);
+students.splash(removeIndex,1);
 res.json(students);
 });
 
