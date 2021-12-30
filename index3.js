@@ -1,5 +1,3 @@
-console.log("Hello, World!");
-
 // Working with NoSql MongoDB
 
 // 1. You can work with Mongo DB directly
@@ -63,14 +61,14 @@ var newValues = {$set:{name:req.body.name,year:req.body.year,gender:req.body.gen
 db.collection(students).updateOne(query,newValues,function(err,result){
 if(err) throw err;
 console.log('student record updated');
-)};
+});
 }});
 
 // API to delete Record
 app.delete('/:id',function(req,res){
 var query = {_id:req.params.id};
 db.collection('students').deleteOne(query,function(err,result){
-if(err)throw err:
+if(err)throw err;
 console.log('record deleted');
 });
 });
@@ -80,11 +78,11 @@ console.log('record deleted');
 //codes in index3.js as shown below
 
 var mongoose = require('mongoose');
-mongoose.connect(mongodb://localhost/mydb);
+mongoose.connect("mongodb://localhost/mydb");
 var studentSchema = mongoose.Schema({
 name:string,
-sex:string,
-age:number});
+year:number,
+gender:string});
 var Student =mongoose.model(Student, studentSchema);
 
 //API to get students records
@@ -95,9 +93,9 @@ res.status(200);
 res.json(response);})});
 
 
-API to create student recbbord
+//API to create student recbbord
 
-app.post('/', function(req,res){var newStudent=new Student({name:req.body.name,sex:req.body.sex,age:req.body.age});
+app.post('/', function(req,res){var newStudent=new Student({name:req.body.name,year:req.body.year,gender:req.body.age});
 newStudent.save(function(err,response){if(err)throw err;
 console.log('student created successfully');
 res.status(200);
@@ -105,24 +103,29 @@ res.json(response);
 });
 });
 
-//API to update student record
-app.get('/:id',function(req,res){Person.find({id:req.params.id},function(err,response){if(err)throw err;
+//API to get a student record
+app.get('/:id',function(req,res){Student.find({id:req.params.id},function(err,response){if(err)throw err;
 console.log("student record updated successfully");
-res.status(200)!
+res.status(200);
 res.json(response);
 });});
 
 //App to update record
-app.put('/:id',function(req,res){if(req.body.name&&req.body.sex&&req.body.age){Person.updateOneAndId({id:req.params.id},req.body,function(err,response){})}});
+app.put('/:id',function(req,res){
+if(req.body.name&&req.body.year&&req.body.gender){
+Student.updateOneAndId({id:req.params.id},req.body.year,function(err,response){
+console.log("student record updated")}
+)}});
 
 //API to delete student record
-app.delete('/:id',function (req,res){Person.remove({id:req.params.id},function (err,response){if(err)throw err;
+app.delete('/:id',function (req,res){
+Student.remove({id:req.params.id},function (err,response){
+if(err)throw err;
 console.log('student deleted');
 });});
  
 app.listen(3000, function(){
-console.log('server is
-listening at port 3000');
+console.log('listening at port 3000');});
 
 
 
