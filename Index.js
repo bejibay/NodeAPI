@@ -22,7 +22,7 @@ res.json(students);
 //Get router for individual student
 app.get("/:id([0-9]{3,})",function(req,res){
 var currStudent = students.filter(function(student){
-if(students.id = req.params.id){return true;}
+if(student.id = req.params.id){return true;}
 });
 if(currStudent.length==1){
 res.json(currStudent);}
@@ -45,7 +45,7 @@ res.json(students);
 //PUT router to update individual student record
 app.put("/:id",function(req,res){
 var updateindex = students.map(function(student){
-return students.id;}).indexOf(req.params.id);
+return student.id;}).indexOf(req.params.id);
 if(updateIndex !== -1 && req.body.name && req.body.age && req.body.gender){
 students[updateIndex]={name:req.body.name,age:req.body.age,gender:req.body.gender};}
 res.json(students);
