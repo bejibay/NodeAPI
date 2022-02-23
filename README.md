@@ -3,7 +3,7 @@
 and MYSQL
 * The APIs use different storage media such as:
 virtual memmory, mysql and mongodb
-*The nosql mongodb storage is effected with both
+* The nosql mongodb storage is effected with both
 mongodb driver(mongodb folder) and mongoose model
 (mongoose folder)
 
