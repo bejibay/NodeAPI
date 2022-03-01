@@ -1,6 +1,6 @@
 // 2.Working with MongoDB through Mongose
 
-//codes in index3.js as shown below
+//codes in index.js as shown below
 
 var mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost/mydb");
