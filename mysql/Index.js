@@ -65,7 +65,7 @@ else{
 var sql="update students where id=req.params.id";
 con.query(sql,function(err,result){
 if (err) throw err;
-console.log(result.affected + row +'updated');});
+console.log(result.affected() + row +'updated');});
 }
 });
 //API to delete a student record
