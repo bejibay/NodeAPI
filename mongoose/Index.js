@@ -20,7 +20,7 @@ res.json(response);})});
 
 //API to create student recbbord
 
-app.post('/', function(req,res){var newStudent=new Student({name:req.body.name,year:req.body.year,gender:req.body.age});
+app.post('/', function(req,res){var newStudent=new Student({name:req.body.name,year:req.body.year,gender:req.body.gender});
 newStudent.save(function(err,response){if(err)throw err;
 console.log('student created successfully');
 res.status(200);
