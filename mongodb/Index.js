@@ -44,10 +44,10 @@ res.json(result);
 
 app.post('/',function(req,res){
 if(req.body.name&&req.body.year&&req.body.gender){
-var data={name:req.body.name,year:req.body.year,age:req.body.gender};
+var data={name:req.body.name,year:req.body.year,gwnder:req.body.gender};
 db.collection('students').insertOne(data,function(err,result){
 if(err)throw err;
-console.log(result.insertedCoun() +' document inserted');
+console.log(result.insertedCount() +' document inserted');
 res.status(200);
 res.json(result);
 });
