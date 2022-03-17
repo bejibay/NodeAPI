@@ -35,7 +35,7 @@ var sql="SELECT* from students where id=?";
 var value=req.params.id;
 con.query(sql,[value],function(err,result){
 if (err) throw err;
-result.status(200);
+res.status(200);
 res.json(result);
 });
 });
