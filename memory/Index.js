@@ -54,8 +54,8 @@ res.json(students);
 //DELETE Router to delete a student record
 app.delete('/', function(req, res){
 var removeIndex = students.map(function(student){
-return students.id}).indexOf(req.params.id);
-students.splash(removeIndex,1);
+return student.id}).indexOf(req.params.id);
+students.splice(removeIndex,1);
 res.json(students);
 });
 
